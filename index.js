@@ -1,3 +1,28 @@
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const mysql = require('mysql2');
+const db = require('./db/connection');
+
+db.connect(err => {
+    if(err) throw err;
+    console.log('Database connected.');
+});
+
+const OptionPrompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'view',
+            message: 'What would you like to do?',
+            choices: ['View All Departments', 'View All Roles', 'View All Employees',
+                    'Add A Deparment','Add A Role', 'Add An Employee', 'Update A Role']
+        }
+    ])
+    .then(selected => {
+        if (selected.view) {
+            
+        }
+    })
+}
+
+OptionPrompt()
+    .then(choiceData => console.log(choiceData));
