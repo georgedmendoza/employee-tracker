@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const db = require('./db/connection');
-const Option = require('./lib/Department');
+const option = require('./lib/queryCalls');
 
 db.connect(err => {
     if(err) throw err;
@@ -20,24 +20,36 @@ const OptionPrompt = () => {
     ])
     .then(selected => {
         if (selected.view === 'View All Departments') {
-            console.log('all dep');
-            // return Option.departments;
-            showAll();
+            option.showAll();
         }
         else if(selected.view === 'View All Roles') {
-            console.log('roles');
+            option.allRoles();
         }
-        // console.log(selected.view);
+        else if(selected.view === 'View All Employees') {
+            option.allEmployees();
+        }
+        else if(selected.view === 'Add A Deparment') {
+            option.allEmployees();
+        }
+        else if(selected.view === 'Add A Role') {
+            option.allEmployees();
+        }
+        else if(selected.view === 'Add An Employee') {
+            option.allEmployees();
+        }
+        else if(selected.view === 'Update A Role') {
+            option.allEmployees();
+        }
     })
 }
 
-const showAll = () => {
-    const sql = `SELECT name AS department_name, id as department_id FROM DEPARTMENT` 
-    db.query(sql, (err, result) => {
-        if(err) throw err;
-        console.table(result);
-    })
-}
+// const showAll = () => {
+//     const sql = `SELECT name AS department_name, id as department_id FROM DEPARTMENT` 
+//     db.query(sql, (err, result) => {
+//         if(err) throw err;
+//         console.table(result);
+//     })
+// }
 
 OptionPrompt()
     .then(choiceData => {
