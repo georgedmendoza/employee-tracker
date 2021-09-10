@@ -21,6 +21,7 @@ const OptionPrompt = () => {
     .then(selected => {
         if (selected.view === 'View All Departments') {
             option.showAll();
+            
         }
         else if(selected.view === 'View All Roles') {
             option.allRoles();
