@@ -3,10 +3,10 @@ const cTable = require('console.table');
 const db = require('./db/connection');
 const option = require('./lib/queryCalls');
 
-db.connect(err => {
-    if(err) throw err;
-    console.log('Database connected.');
-});
+// db.connect(err => {
+//     if(err) throw err;
+//     console.log('Database connected.');
+// });
 
 const OptionPrompt = () => {
     return inquirer.prompt([
@@ -29,16 +29,16 @@ const OptionPrompt = () => {
             option.allEmployees();
         }
         else if(selected.view === 'Add A Deparment') {
-            option.allEmployees();
+            option.addDepartment();
         }
         else if(selected.view === 'Add A Role') {
-            option.allEmployees();
+            option.addRole();
         }
         else if(selected.view === 'Add An Employee') {
-            option.allEmployees();
+            option.addEmployee();
         }
         else if(selected.view === 'Update A Role') {
-            option.allEmployees();
+            option.updateRole();
         }
     })
 }
@@ -53,5 +53,5 @@ const OptionPrompt = () => {
 
 OptionPrompt()
     .then(choiceData => {
-        console.log(choiceData);
+        // console.log(choiceData);
     });
