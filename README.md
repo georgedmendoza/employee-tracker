@@ -1,7 +1,7 @@
 # employee-tracker
 
  ## Description 
-  This application manage a company's employee database, using Node.js, Inquirer, and MySQL. The user is able to select and action based on the options provided once the prompt starts. It will then display a table of information based on the user selection. Currently this application can only make edits to the role of an employee. For future development adding more editing options will give the user more flexibility to control the database
+  This application manage a company's employee database, using Node.js, Inquirer, and MySQL. The user is able to select and action based on the options provided once the prompt starts. It will then display a table of information based on the user selection. Currently this application can only make edits to the role of an employee. For future development adding more editing options will give the user more flexibility to control the database.A brief video is attached in the Usage section to see how the application functions when the user is interacting with it.
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   ## Table of Contents
@@ -28,7 +28,7 @@
   ## Usage 
   Start the application by calling the file index.js in either Terminal or GitBash. From there the user is asked a series of prompts and the answer is accepted/recorded when the user hits 'Enter' and will output a table containing data that the user requested.
 
- screenshot here to be inputed
+  https://drive.google.com/file/d/1lzIIz5LLtJmVdiN82wRPKvG_FnnZe2q_/view?usp=sharing
   
   ## License
   - This project is under the [MIT](https://opensource.org/licenses/MIT) license. 

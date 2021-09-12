@@ -2,7 +2,6 @@
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const db = require('./db/connection');
-// const option = require('./lib/queryCalls');
 
 db.connect(err => {
     if(err) throw err;
@@ -16,22 +15,18 @@ function OptionPrompt() {
             name: 'view',
             message: 'What would you like to do?',
             choices: ['View All Departments', 'View All Roles', 'View All Employees',
-                    'Add A Deparment','Add A Role', 'Add An Employee', 'Update A Role']
+                    'Add A Deparment','Add A Role', 'Add An Employee', 'Update A Role','NOTHING']
         }
     ])
     .then(selected => {
         if (selected.view === 'View All Departments') {
             showAll()
-            // OptionPrompt();
-            
         }
         else if(selected.view === 'View All Roles') {
             allRoles();
-            // OptionPrompt();
         }
         else if(selected.view === 'View All Employees') {
             allEmployees();
-            // OptionPrompt();
         }
         else if(selected.view === 'Add A Deparment') {
             addDepartment();
@@ -45,11 +40,13 @@ function OptionPrompt() {
         else if(selected.view === 'Update A Role') {
             updateRole();
         }
+        else if(selected.view === 'NOTHING'){
+            return;
+        }
     })
 }
 
-// functions below
-
+// functions below to get specific query
 const showAll = () => {
     const sql = `SELECT name AS department_name, id as department_id FROM DEPARTMENT` 
     db.query(sql, (err, result) => {
@@ -100,7 +97,7 @@ const addDepartment = () => {
         }
     ])
     .then(result => {
-        console.log(result);
+        // console.log(result);
         const sql = `INSERT INTO department(name)
         VALUES ('${result.department}')`;
         db.query(sql, (err, result) => {
@@ -160,13 +157,15 @@ const addEmployee = () => {
             name: rol.title
         }))
         // console.log(roles);
+        const sql = `SELECT * FROM EMPLOYEE`
     
-        db.query('SELECT * FROM EMPLOYEE', (err, result) => {
+        db.query(sql, (err, result) => {
             if(err) throw err;
             // console.log(result);
             const employees = result.map(emp => ({
                 value: emp.id,
-                name: emp.first_name+' '+emp.last_name
+                name: emp.first_name+' '+emp.last_name,
+                // manager: emp.manager
             }))
             // console.log(employees);
             inquirer.prompt([
@@ -194,7 +193,7 @@ const addEmployee = () => {
                 }
                 ])
                 .then(result => {
-                    console.log(result);
+                    // console.log(result);
                     const sql = `INSERT INTO employee(first_name, last_name, role_id, manager_id)
                     VALUES ('${result.first_name}','${result.last_name}', ${result.role_id}, ${result.manager_id})`;
                     db.query(sql, (err, result) => {
