@@ -1,0 +1,19 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "## Description    This application manage a company's employee database, using Node.js, Inquirer, and MySQL. The user is able to select and action based on the options provided once the prompt starts. It will then display a table of information based on the user selection. Currently this application can only make edits to the role of an employee. For future development adding more editing options will give the user more flexibility to control the database.A brief video is attached in the Usage section to see how the application functions when the user is interacting with it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgedmendoza/employee-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgedmendoza/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/georgedmendoza/employee-tracker#readme"
+}
